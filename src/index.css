@@ -44,10 +44,12 @@ body {
   font-family: 'Roboto', sans-serif;
   color: var(--text-color);
   background-color: var(--base-color);
+  width: min(1360px, 90%);
+  margin: 0 auto;
 }
 
 .home {
-  width: min(600px, 90%);
+  width: min(600px, 100%);
   margin: 40px auto;
 }
 
@@ -85,4 +87,131 @@ body {
 
 .home .sign-in-btn:hover {
   background-color: var(--secondary-color);
+}
+
+.sign-in-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-in-page > div {
+  height: 85vh;
+  width: min(600px, 100%);
+  background-color: #000;
+  border-radius: 20px;
+  padding: 50px;
+  position: relative;
+}
+
+.sign-in-page > div > a.close-sign-in {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border-color: transparent;
+  outline-color: transparent;
+}
+
+.sign-in-page > div > a.close-sign-in:hover {
+  background-color: var(--secondary-color);
+}
+
+.sign-in-page > div > div {
+  width: min(350px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sign-in-page form,
+.sign-in-page form .input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sign-in-page form {
+  height: 55vh;
+  justify-content: space-between;
+}
+
+.sign-in-page form .input-fields .password-field {
+  position: relative;
+}
+
+.sign-in-page form .input-fields .password-field p.show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-100%);
+  cursor: pointer;
+}
+
+.sign-in-page form a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.7rem;
+}
+
+.sign-in-page form a:hover {
+  text-decoration: underline;
+}
+
+.sign-in-page form input {
+  width: 100%;
+  padding: 15px;
+  border: solid 2px transparent;
+  outline: solid 1px var(--secondary-color);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.sign-in-page form input:focus {
+  border: solid 2px var(--primary-color);
+}
+
+.sign-in-page form button {
+  border-radius: 100px;
+  padding: 15px 0;
+  font-size: 1rem;
+  color: #000;
+  border-color: transparent;
+  outline-color: transparent;
+  font-weight: bold;
+}
+
+.sign-in-page form button:disabled {
+  background-color: var(--base-color);
+}
+
+.sign-in-page form button:enabled {
+  background-color: var(--text-color);
+  cursor: pointer;
+}
+
+.sign-in-page .to-sign-up {
+  margin-top: 20px;
+  color: var(--secondary-color);
+}
+
+.sign-in-page .to-sign-up a {
+  font-size: 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.sign-in-page .to-sign-up a:hover {
+  text-decoration: underline;
 }
