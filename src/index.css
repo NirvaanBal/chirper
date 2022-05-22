@@ -13,8 +13,76 @@
   --secondary-color: #3a4750;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+p,
+label,
+li {
+  font-size: 1rem;
+}
+
+a,
+button {
+  font-size: 0.9rem;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: var(--text-color);
   background-color: var(--base-color);
+}
+
+.home {
+  width: min(600px, 90%);
+  margin: 40px auto;
+}
+
+.home main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.home h1 {
+  font-size: 4rem;
+  margin-bottom: 30px;
+}
+
+.home .sign-in {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home .sign-in-label {
+  font-weight: bold;
+}
+
+.home .sign-in-btn {
+  border: solid 1px var(--text-color);
+  width: min(300px, 100%);
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0;
+  border-radius: 100px;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.home .sign-in-btn:hover {
+  background-color: var(--secondary-color);
 }
