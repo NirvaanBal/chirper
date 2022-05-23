@@ -26,33 +26,26 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const auth = getAuth(app);
-      const userCrendential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCrendential.user;
 
-      setFormData({ email: '', password: '' });
-      navigate('/home');
-    } catch (e) {
-      console.error('ERROR:', e.message);
-    }
+    const auth = getAuth(app);
+    const userCrendential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCrendential.user;
+
+    setFormData({ email: '', password: '' });
+    navigate('/home');
   };
 
   const handleClick = async () => {
     const provider = new GoogleAuthProvider();
     const auth = getAuth(app);
 
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      console.log(user);
-    } catch (e) {
-      console.error('ERROR:', e);
-    }
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    navigate('/home');
   };
 
   return (
