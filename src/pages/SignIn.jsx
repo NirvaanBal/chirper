@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth';
 import { app } from '../firebase.config';
+import { FcGoogle } from 'react-icons/fc';
 
 function SignIn() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -36,6 +42,19 @@ function SignIn() {
     }
   };
 
+  const handleClick = async () => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth(app);
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log(user);
+    } catch (e) {
+      console.error('ERROR:', e);
+    }
+  };
+
   return (
     <div className="sign-in-page">
       <div>
@@ -48,7 +67,9 @@ function SignIn() {
           </header>
 
           <main>
-            {/* OAuth SignIn */}
+            <button onClick={handleClick} className="o-auth-btn">
+              <FcGoogle size="1.2rem" /> Sign in with Google
+            </button>
 
             <form onSubmit={handleSubmit}>
               <div className="input-fields">

@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 :root {
@@ -41,7 +42,7 @@ button {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   color: var(--text-color);
   background-color: var(--base-color);
   width: min(1360px, 90%);
@@ -70,12 +71,20 @@ body {
   gap: 15px;
 }
 
+.home .sign-up {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .home .sign-in-label {
   font-weight: bold;
 }
 
 .home .sign-up-btn,
-.home .sign-in-btn {
+.home .sign-in-btn,
+.home .o-auth-btn {
   display: block;
   border: solid 1px var(--text-color);
   width: min(300px, 100%);
@@ -86,12 +95,23 @@ body {
   color: var(--primary-color);
   font-weight: 700;
   outline-color: transparent;
+  cursor: pointer;
 }
 
 .home .sign-up-btn {
   background-color: var(--primary-color);
   color: var(--base-color);
   border-color: transparent;
+}
+
+.home .o-auth-btn {
+  background-color: var(--text-color);
+  color: var(--base-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 400;
 }
 
 .home .sign-in-btn:hover {
@@ -150,8 +170,12 @@ body {
 }
 
 .sign-in-page form {
-  height: 55vh;
+  height: calc(85vh - (30vh + 30px));
   justify-content: space-between;
+}
+
+.sign-up-page form {
+  height: 60vh;
 }
 
 .sign-in-page form .input-fields .password-field {
@@ -196,7 +220,8 @@ body {
   border: solid 2px var(--primary-color);
 }
 
-.sign-in-page form button {
+.sign-in-page form button,
+.sign-in-page .o-auth-btn {
   border-radius: 100px;
   padding: 15px 0;
   font-size: 1rem;
@@ -204,6 +229,21 @@ body {
   border-color: transparent;
   outline-color: transparent;
   font-weight: bold;
+}
+
+.sign-in-page .o-auth-btn {
+  width: 100%;
+  font-weight: 400;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.sign-in-page .o-auth-btn:hover {
+  cursor: pointer;
 }
 
 .sign-in-page form button:disabled {
@@ -216,7 +256,7 @@ body {
 }
 
 .sign-in-page .to-sign-up {
-  margin-top: 20px;
+  margin-top: 5px;
   color: var(--secondary-color);
 }
 

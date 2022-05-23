@@ -39,7 +39,7 @@ function SignUp() {
   };
 
   return (
-    <div className="sign-in-page">
+    <div className="sign-in-page sign-up-page">
       <div>
         <Link to="/" className="close-sign-in" title="close">
           x

@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
 
 function Chirper() {
+  const handleClick = () => {
+    console.log('CREATE USERS COLLECTION');
+  };
+
   return (
     <div className="home">
       <header>
@@ -10,6 +15,12 @@ function Chirper() {
 
       <main>
         <section className="sign-up">
+          <button onClick={handleClick} className="o-auth-btn">
+            <FcGoogle size="1.2rem" /> Sign up with Google
+            {/**
+             * Add user after OAuth Login to users collection
+             */}
+          </button>
           <Link className="sign-up-btn" to="/sign-up">
             Sign up with email
           </Link>
