@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function SignIn() {
+function Chirper() {
   return (
     <div className="home">
       <header>
@@ -22,4 +22,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Chirper;
