@@ -35,8 +35,8 @@ function SignIn() {
       );
       const user = userCrendential.user;
 
-      navigate('/home');
       setFormData({ email: '', password: '' });
+      navigate('/home');
     } catch (e) {
       console.error('ERROR:', e.message);
     }
@@ -67,7 +67,7 @@ function SignIn() {
           </header>
 
           <main>
-            <button onClick={handleClick} className="o-auth-btn">
+            <button type="button" onClick={handleClick} className="o-auth-btn">
               <FcGoogle size="1.2rem" /> Sign in with Google
             </button>
 

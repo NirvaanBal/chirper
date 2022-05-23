@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../firebase.config';
 
@@ -12,6 +12,7 @@ function SignUp() {
   const [passwordFieldType, setPasswordFieldType] = useState(true);
 
   const { name, email, password } = formData;
+  const navigate = useNavigate();
 
   const onInputChange = (e) => {
     setFormData((prevState) => ({
@@ -33,6 +34,9 @@ function SignUp() {
       const user = userCrendential.user;
 
       console.log(user);
+
+      setFormData({ name: '', email: '', password: '' });
+      navigate('/home');
     } catch (e) {
       console.error('ERROR:', e.message);
     }

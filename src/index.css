@@ -269,3 +269,7 @@ body {
 .sign-in-page .to-sign-up a:hover {
   text-decoration: underline;
 }
+
+.main-page {
+  display: flex;
+}

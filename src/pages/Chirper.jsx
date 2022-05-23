@@ -10,7 +10,7 @@ function Chirper() {
     <div className="home">
       <header>
         <h1>Happening now</h1>
-        <h2>Join Chirper today.</h2>
+        <h2 style={{ fontSize: '2.4rem' }}>Join Chirper today.</h2>
       </header>
 
       <main>
