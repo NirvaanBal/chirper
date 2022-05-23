@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../firebase.config';
 
-function SignIn() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
+function SignUp() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
   const [passwordFieldType, setPasswordFieldType] = useState(true);
 
-  const { email, password } = formData;
-  const navigate = useNavigate();
+  const { name, email, password } = formData;
 
   const onInputChange = (e) => {
     setFormData((prevState) => ({
@@ -20,17 +22,17 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const auth = getAuth(app);
-      const userCrendential = await signInWithEmailAndPassword(
+      const userCrendential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       const user = userCrendential.user;
 
-      navigate('/home');
-      setFormData({ email: '', password: '' });
+      console.log(user);
     } catch (e) {
       console.error('ERROR:', e.message);
     }
@@ -44,14 +46,22 @@ function SignIn() {
         </Link>
         <div>
           <header>
-            <h1>Sign in to Chirper</h1>
+            <h1>Create your account</h1>
           </header>
 
           <main>
-            {/* OAuth SignIn */}
-
             <form onSubmit={handleSubmit}>
               <div className="input-fields">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={onInputChange}
+                  required
+                  autoFocus
+                />
                 <input
                   type="email"
                   name="email"
@@ -60,7 +70,6 @@ function SignIn() {
                   value={email}
                   onChange={onInputChange}
                   required
-                  autoFocus
                 />
                 <div className="password-field">
                   <input
@@ -73,7 +82,7 @@ function SignIn() {
                     required
                   />
                   <p
-                    className="show-password"
+                    className="show-password sign-up"
                     onClick={() => setPasswordFieldType(!passwordFieldType)}
                     title={
                       passwordFieldType ? 'Reveal password' : 'Hide password'
@@ -81,21 +90,20 @@ function SignIn() {
                   >
                     👁️‍🗨️
                   </p>
-                  <small>
-                    <Link to="/forgot-password">Forgot Password?</Link>
-                  </small>
                 </div>
               </div>
               <button
                 type="submit"
-                disabled={email.length < 1 || password.length < 1}
+                disabled={
+                  email.length < 1 || password.length < 1 || name.length < 1
+                }
               >
-                Sign in
+                Sign up
               </button>
             </form>
 
             <p className="to-sign-up">
-              Don't have an account? <Link to="/sign-up">Sign up</Link>
+              Already have an account? <Link to="/sign-in">Sign in</Link>
             </p>
           </main>
         </div>
@@ -104,4 +112,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;

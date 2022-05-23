@@ -9,7 +9,11 @@ function Chirper() {
       </header>
 
       <main>
-        <section className="sign-up">{/* Sign Up */}</section>
+        <section className="sign-up">
+          <Link className="sign-up-btn" to="/sign-up">
+            Sign up with email
+          </Link>
+        </section>
 
         <section className="sign-in">
           <p className="sign-in-label">Already have an account?</p>

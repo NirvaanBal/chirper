@@ -74,7 +74,9 @@ body {
   font-weight: bold;
 }
 
+.home .sign-up-btn,
 .home .sign-in-btn {
+  display: block;
   border: solid 1px var(--text-color);
   width: min(300px, 100%);
   text-align: center;
@@ -82,7 +84,14 @@ body {
   padding: 10px 0;
   border-radius: 100px;
   color: var(--primary-color);
-  font-weight: bold;
+  font-weight: 700;
+  outline-color: transparent;
+}
+
+.home .sign-up-btn {
+  background-color: var(--primary-color);
+  color: var(--base-color);
+  border-color: transparent;
 }
 
 .home .sign-in-btn:hover {
@@ -155,6 +164,10 @@ body {
   top: 50%;
   transform: translateY(-100%);
   cursor: pointer;
+}
+
+.sign-in-page form .input-fields .password-field p.show-password.sign-up {
+  transform: translateY(-55%);
 }
 
 .sign-in-page form a {
