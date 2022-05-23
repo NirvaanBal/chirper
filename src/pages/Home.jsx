@@ -4,7 +4,9 @@ import {
   onAuthStateChanged,
   reauthenticateWithCredential,
 } from 'firebase/auth';
-import { app } from '../firebase.config';
+import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { app, db } from '../firebase.config';
+
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -21,7 +23,6 @@ function Home() {
       if (user) {
         setUser(user);
         setLoading(false);
-        console.log(user);
       } else {
         navigate('/sign-in');
       }
@@ -32,9 +33,19 @@ function Home() {
     setTweet(e.target.value);
   };
 
-  const submitTweet = (e) => {
+  const submitTweet = async (e) => {
     e.preventDefault();
-    console.log(user.uid);
+
+    const newTweetRef = doc(collection(db, 'tweets'));
+
+    await setDoc(newTweetRef, {
+      tweet,
+      userid: user.uid,
+      timestamp: serverTimestamp(),
+      likes: 0,
+    });
+
+    setTweet('');
   };
 
   if (loading) return <h2>Loading...</h2>;
