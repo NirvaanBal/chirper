@@ -320,6 +320,51 @@ body {
   border-right: solid 1px var(--secondary-color);
 }
 
+.main-page .user-home form div.text-field {
+  border-bottom: solid 1px var(--secondary-color);
+  padding-bottom: 10px;
+  margin: 10px 0;
+}
+
+.main-page .user-home form div.text-field textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  font-size: 1.3rem;
+  color: var(--text-color);
+  background-color: transparent;
+}
+
+.main-page .user-home form div.text-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-page .user-home form div.text-info p {
+  font-size: 0.8rem;
+}
+
+.main-page .user-home form div.text-info button {
+  border: solid 1px var(--primary-color);
+  outline: inset 1px transparent;
+  background-color: var(--primary-color);
+  padding: 8px 15px;
+  border-radius: 40px;
+  color: var(--base-color);
+  font-weight: bold;
+}
+
+.main-page .user-home form div.text-info button:disabled {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.main-page .user-home form div.text-info button:enabled {
+  cursor: pointer;
+}
+
 .main-page .search {
   grid-column: span 4;
   position: sticky;
