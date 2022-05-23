@@ -118,6 +118,7 @@ body {
   border-radius: 30px;
   border-color: transparent;
   outline-color: transparent;
+  color: var(--text-color);
 }
 
 .sign-in-page > div > a.close-sign-in:hover {

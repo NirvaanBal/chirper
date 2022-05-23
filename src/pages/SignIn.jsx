@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { GrClose } from 'react-icons/gr';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../firebase.config';
 
 function SignIn() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [passwordFieldType, setPasswordFieldType] = useState(true);
 
   const { email, password } = formData;
+  const navigate = useNavigate();
 
   const onInputChange = (e) => {
     setFormData((prevState) => ({
@@ -15,11 +18,24 @@ function SignIn() {
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const auth = getAuth(app);
+      await signInWithEmailAndPassword(auth, email, password);
+
+      navigate('/home');
+      setFormData({ email: '', password: '' });
+    } catch (e) {
+      console.error('ERROR:', e.message);
+    }
+  };
+
   return (
     <div className="sign-in-page">
       <div>
         <Link to="/" className="close-sign-in">
-          <GrClose stroke="rgb(255, 255, 255)" />
+          x
         </Link>
         <div>
           <header>
@@ -29,7 +45,7 @@ function SignIn() {
           <main>
             {/* OAuth SignIn */}
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="input-fields">
                 <input
                   type="email"
@@ -38,6 +54,7 @@ function SignIn() {
                   placeholder="Email"
                   value={email}
                   onChange={onInputChange}
+                  required
                 />
                 <div className="password-field">
                   <input
@@ -47,6 +64,7 @@ function SignIn() {
                     placeholder="Password"
                     value={password}
                     onChange={onInputChange}
+                    required
                   />
                   <p
                     className="show-password"
