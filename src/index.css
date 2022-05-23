@@ -293,7 +293,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  /* position: fixed; */
+
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 .main-page .actions .logout-btn {
@@ -319,4 +322,12 @@ body {
 
 .main-page .search {
   grid-column: span 4;
+  position: sticky;
+  overflow-y: scroll;
+  height: 100vh;
+  top: 0;
+}
+
+.main-page .search::-webkit-scrollbar {
+  width: 0;
 }
