@@ -327,6 +327,7 @@ body {
 }
 
 .main-page .user-home form div.text-field textarea {
+  overflow: hidden;
   border: none;
   outline: none;
   resize: none;

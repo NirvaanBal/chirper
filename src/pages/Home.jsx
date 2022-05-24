@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
   const [user, setUser] = useState({});
   const [tweet, setTweet] = useState('');
-  const [rows, setRows] = useState(1);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -31,6 +30,8 @@ function Home() {
 
   const onTweetChange = (e) => {
     setTweet(e.target.value);
+    e.target.style.height = '22px';
+    e.target.style.height = e.target.scrollHeight + 'px';
   };
 
   const submitTweet = async (e) => {
@@ -71,7 +72,7 @@ function Home() {
               required
               value={tweet}
               onChange={onTweetChange}
-              rows={rows}
+              style={{ height: '22px' }}
             />
           </div>
           <div className="text-info">
