@@ -40,7 +40,7 @@ function Home() {
       const q = query(
         collection(db, 'tweets'),
         orderBy('timestamp', 'desc'),
-        limit(20)
+        limit(10)
       );
       const querySnapshot = await getDocs(q);
       const tweets = [];
