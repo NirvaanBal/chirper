@@ -2,7 +2,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/Ai';
 
 function TweetItem({ tweet: { likes, timestamp, tweet, userid } }) {
   const postDate = () => {
-    const date = new Date(timestamp.seconds * 1000).toDateString();
+    const date = new Date(timestamp?.seconds * 1000).toDateString();
     return date;
   };
 

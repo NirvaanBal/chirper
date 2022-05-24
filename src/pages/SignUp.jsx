@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../firebase.config';
+import { setDoc, doc, collection } from 'firebase/firestore';
+import { app, db } from '../firebase.config';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -33,7 +34,13 @@ function SignUp() {
       );
       const user = userCrendential.user;
 
-      console.log(user);
+      const newUserRef = doc(collection(db, 'users'));
+      await setDoc(newUserRef, {
+        userid: user.uid,
+        displayName: name,
+        followers: 0,
+        following: 0,
+      });
 
       setFormData({ name: '', email: '', password: '' });
       navigate('/home');
