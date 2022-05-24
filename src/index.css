@@ -284,10 +284,6 @@ body {
   position: relative;
 }
 
-.main-page > section {
-  padding: 20px;
-}
-
 .main-page .actions {
   grid-column: span 2;
   display: flex;
@@ -297,6 +293,7 @@ body {
   position: sticky;
   top: 0;
   height: 100vh;
+  padding: 20px;
 }
 
 .main-page .actions .logout-btn {
@@ -318,6 +315,15 @@ body {
   grid-column: span 6;
   border-left: solid 1px var(--secondary-color);
   border-right: solid 1px var(--secondary-color);
+}
+
+.main-page .user-home h1,
+.main-page .user-home form {
+  padding: 10px;
+}
+
+.main-page .user-home form {
+  padding-top: 0;
 }
 
 .main-page .user-home form div.text-field {
@@ -372,8 +378,49 @@ body {
   overflow-y: scroll;
   height: 100vh;
   top: 0;
+  padding: 20px;
 }
 
 .main-page .search::-webkit-scrollbar {
   width: 0;
+}
+
+.tweet-item {
+  padding: 20px;
+  border-top: solid 1px var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tweet-item .user-and-date {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tweet-item .user-and-date small {
+  color: gray;
+}
+
+.tweet-item .tweet-item-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet-item .likes {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  outline-color: transparent;
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.tweet-item .likes:hover {
+  color: var(--primary-color);
+  cursor: pointer;
 }
