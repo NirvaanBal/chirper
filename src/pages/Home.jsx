@@ -38,14 +38,18 @@ function Home() {
 
   useEffect(() => {
     const getUser = async () => {
-      const q = query(collection(db, 'users'), where('userid', '==', user.uid));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => setUser(doc.data()));
+      const realUserId = user.uid;
+      if (realUserId) {
+        const q = query(
+          collection(db, 'users'),
+          where('userid', '==', user.uid)
+        );
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => setUser(doc.data()));
+      }
     };
 
-    getUser();
-
-    console.log(user);
+    if (user) getUser();
   }, [user]);
 
   useEffect(() => {
