@@ -38,8 +38,8 @@ function SignUp() {
       await setDoc(newUserRef, {
         userid: user.uid,
         displayName: name,
-        followers: 0,
-        following: 0,
+        followers: [],
+        following: [],
       });
 
       setFormData({ name: '', email: '', password: '' });
