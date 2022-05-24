@@ -10,6 +10,7 @@ import {
   query,
   orderBy,
   limit,
+  where,
 } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 import { app, db } from '../firebase.config';
@@ -34,6 +35,18 @@ function Home() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const q = query(collection(db, 'users'), where('userid', '==', user.uid));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => setUser(doc.data()));
+    };
+
+    getUser();
+
+    console.log(user);
+  }, [user]);
 
   useEffect(() => {
     const getTweets = async () => {
