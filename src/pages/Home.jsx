@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
-import {
-  getAuth,
-  onAuthStateChanged,
-  reauthenticateWithCredential,
-} from 'firebase/auth';
-import { collection, doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { app, db } from '../firebase.config';
-
 import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import {
+  collection,
+  doc,
+  setDoc,
+  serverTimestamp,
+  getDocs,
+  query,
+  orderBy,
+  limit,
+} from 'firebase/firestore';
+import { v4 as uuidv4 } from 'uuid';
+import { app, db } from '../firebase.config';
+import TweetItem from '../components/TweetItem';
 
 function Home() {
   const [user, setUser] = useState({});
   const [tweet, setTweet] = useState('');
+  const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -28,9 +35,29 @@ function Home() {
     });
   }, []);
 
+  useEffect(() => {
+    const getTweets = async () => {
+      const q = query(
+        collection(db, 'tweets'),
+        orderBy('timestamp', 'desc'),
+        limit(20)
+      );
+      const querySnapshot = await getDocs(q);
+      const tweets = [];
+
+      querySnapshot.forEach((doc) => {
+        tweets.push(doc.data());
+      });
+
+      setTweets(tweets);
+    };
+
+    getTweets();
+  }, [tweets]);
+
   const onTweetChange = (e) => {
     setTweet(e.target.value);
-    e.target.style.height = '22px';
+    e.target.style.height = '23px';
     e.target.style.height = e.target.scrollHeight + 'px';
   };
 
@@ -38,12 +65,12 @@ function Home() {
     e.preventDefault();
 
     const newTweetRef = doc(collection(db, 'tweets'));
-
     await setDoc(newTweetRef, {
       tweet,
       userid: user.uid,
       timestamp: serverTimestamp(),
       likes: 0,
+      tid: uuidv4(),
     });
 
     setTweet('');
@@ -72,7 +99,7 @@ function Home() {
               required
               value={tweet}
               onChange={onTweetChange}
-              style={{ height: '22px' }}
+              style={{ height: '23px' }}
             />
           </div>
           <div className="text-info">
@@ -88,6 +115,12 @@ function Home() {
             </button>
           </div>
         </form>
+
+        <section className="tweets">
+          {tweets.map((t) => (
+            <TweetItem key={t.tid} tweet={t} />
+          ))}
+        </section>
       </section>
       <section className="search">Search...</section>
     </main>
