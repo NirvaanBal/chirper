@@ -63,7 +63,7 @@ function Home() {
       const querySnapshot = await getDocs(q);
       const tweets = [];
 
-      querySnapshot.forEach(async (doc) => {
+      querySnapshot.forEach((doc) => {
         tweets.push(doc.data());
       });
 
