@@ -21,6 +21,7 @@ function Home() {
   const [tweet, setTweet] = useState('');
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [tweetsUpdated, setTweetsUpdated] = useState(false);
 
   const navigate = useNavigate();
   const auth = getAuth(app);
@@ -62,7 +63,7 @@ function Home() {
       const querySnapshot = await getDocs(q);
       const tweets = [];
 
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(async (doc) => {
         tweets.push(doc.data());
       });
 
@@ -70,7 +71,8 @@ function Home() {
     };
 
     getTweets();
-  }, [tweets]);
+    setTweetsUpdated(false);
+  }, [tweetsUpdated]);
 
   const onTweetChange = (e) => {
     setTweet(e.target.value);
@@ -82,15 +84,16 @@ function Home() {
     e.preventDefault();
 
     const newTweetRef = doc(collection(db, 'tweets'));
-    await setDoc(newTweetRef, {
-      tweet,
-      userid: user.uid,
+    const newTweet = await setDoc(newTweetRef, {
+      content: tweet,
+      user: user.uid,
       timestamp: serverTimestamp(),
       likes: 0,
       tid: uuidv4(),
     });
 
     setTweet('');
+    setTweetsUpdated(true);
   };
 
   if (loading) return <h2>Loading...</h2>;
