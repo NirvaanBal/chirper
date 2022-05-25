@@ -86,10 +86,11 @@ function Home() {
     const newTweetRef = doc(collection(db, 'tweets'));
     const newTweet = await setDoc(newTweetRef, {
       content: tweet,
-      user: user.userid,
+      user: user.userid || user.uid,
       timestamp: serverTimestamp(),
       likes: 0,
       tid: uuidv4(),
+      creator: getAuth(app).currentUser.displayName,
     });
 
     setTweet('');

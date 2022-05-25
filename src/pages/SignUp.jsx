@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 import { setDoc, doc, collection } from 'firebase/firestore';
 import { app, db } from '../firebase.config';
 
@@ -33,6 +37,10 @@ function SignUp() {
         password
       );
       const user = userCrendential.user;
+
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
 
       const newUserRef = doc(collection(db, 'users'));
       await setDoc(newUserRef, {
