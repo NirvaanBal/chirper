@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA7YBo-skegxrJ_C674MbOXPYbp8Jed5RY',
-  authDomain: 'chirper-8178a.firebaseapp.com',
-  projectId: 'chirper-8178a',
-  storageBucket: 'chirper-8178a.appspot.com',
-  messagingSenderId: '181864712167',
-  appId: '1:181864712167:web:8fe86b9052d4f6bd8f9f42',
+  apiKey: 'AIzaSyAxFitSzIeYKuqx4GAPJjK5sXI7AskmwCY',
+  authDomain: 'chirper2-b6981.firebaseapp.com',
+  projectId: 'chirper2-b6981',
+  storageBucket: 'chirper2-b6981.appspot.com',
+  messagingSenderId: '831357483892',
+  appId: '1:831357483892:web:3530454098826250150a21',
 };
 
 export const app = initializeApp(firebaseConfig);
