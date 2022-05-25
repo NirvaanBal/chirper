@@ -1,6 +1,6 @@
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/Ai';
 
-function TweetItem({ tweet: { likes, timestamp, tweet, userid } }) {
+function TweetItem({ tweet: { likes, timestamp, content, username } }) {
   const postDate = () => {
     const date = new Date(timestamp?.seconds * 1000).toDateString();
     return date;
@@ -9,12 +9,12 @@ function TweetItem({ tweet: { likes, timestamp, tweet, userid } }) {
   return (
     <div className="tweet-item">
       <div className="user-and-date">
-        <h4 className="user">later...</h4>
+        <h4 className="username">{username}</h4>
         <p>
           <small>{postDate()}</small>
         </p>
       </div>
-      <p>{tweet}</p>
+      <p>{content}</p>
       <div className="tweet-item-actions">
         <button className="likes">
           {likes < 1 ? <AiOutlineHeart /> : <AiFillHeart />} {likes}
