@@ -98,7 +98,6 @@ function Home() {
     });
 
     setTweet('');
-    location.reload();
   };
 
   const fetchMoreTweets = async () => {
