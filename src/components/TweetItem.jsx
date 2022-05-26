@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/Ai';
+// import { AiOutlineHeart, AiFillHeart } from 'react-icons/Ai';
 
 function TweetItem({ tweet: { likes, timestamp, content, creator, user } }) {
   const postDate = () => {
@@ -19,9 +19,9 @@ function TweetItem({ tweet: { likes, timestamp, content, creator, user } }) {
       </div>
       <p>{content}</p>
       <div className="tweet-item-actions">
-        <button className="likes">
+        {/* <button className="likes">
           {likes < 1 ? <AiOutlineHeart /> : <AiFillHeart />} {likes}
-        </button>
+        </button> */}
       </div>
     </div>
   );
