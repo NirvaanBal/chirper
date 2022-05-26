@@ -1,6 +1,6 @@
 # Chirper
 
-A social media app inspired from Twitter.
+A social media app inspired from Twitter. [Live Preview](https://chirper.vercel.app).
 
 ## Features
 
