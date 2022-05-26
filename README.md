@@ -4,10 +4,10 @@ A social media app inspired from Twitter.
 
 ## Features
 
-- Complete authentication
-- Google OAuth Login
-- Firebase used for backend/database
-- Lazy infinite loading
+- Complete authentication 🔑
+- Google OAuth Login 🔒
+- Firebase used for backend/database 🔥
+- Lazy infinite loading 🐢
 
 ## Tech Stack
 
