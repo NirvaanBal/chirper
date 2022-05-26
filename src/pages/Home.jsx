@@ -178,7 +178,9 @@ function Home() {
           </button>
         )}
       </section>
-      <section className="search">Search...</section>
+      <section className="search">
+        This work of this section is under progress...
+      </section>
     </main>
   );
 }

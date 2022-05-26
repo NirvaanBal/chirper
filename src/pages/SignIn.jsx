@@ -95,9 +95,9 @@ function SignIn() {
                   >
                     👁️‍🗨️
                   </p>
-                  <small>
+                  {/* <small>
                     <Link to="/forgot-password">Forgot Password?</Link>
-                  </small>
+                  </small> */}
                 </div>
               </div>
               <button
