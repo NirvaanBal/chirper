@@ -11,6 +11,7 @@ import {
   orderBy,
   limit,
   where,
+  startAfter,
 } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 import { app, db } from '../firebase.config';
@@ -21,7 +22,8 @@ function Home() {
   const [tweet, setTweet] = useState('');
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [tweetsUpdated, setTweetsUpdated] = useState(false);
+  const [upto, setUpto] = useState({});
+  const [allFetched, setAllFetched] = useState(false);
 
   const navigate = useNavigate();
   const auth = getAuth(app);
@@ -58,9 +60,12 @@ function Home() {
       const q = query(
         collection(db, 'tweets'),
         orderBy('timestamp', 'desc'),
-        limit(10)
+        limit(5)
       );
       const querySnapshot = await getDocs(q);
+      const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+
+      setUpto(lastVisible);
       const tweets = [];
 
       querySnapshot.forEach((doc) => {
@@ -71,8 +76,7 @@ function Home() {
     };
 
     getTweets();
-    setTweetsUpdated(false);
-  }, [tweetsUpdated]);
+  }, []);
 
   const onTweetChange = (e) => {
     setTweet(e.target.value);
@@ -94,7 +98,28 @@ function Home() {
     });
 
     setTweet('');
-    setTweetsUpdated(true);
+    location.reload();
+  };
+
+  const fetchMoreTweets = async () => {
+    const next = query(
+      collection(db, 'tweets'),
+      orderBy('timestamp', 'desc'),
+      startAfter(upto),
+      limit(5)
+    );
+
+    const nextSnapshot = await getDocs(next);
+    const lastVisible = nextSnapshot.docs[nextSnapshot.docs.length - 1];
+    setUpto(lastVisible);
+    if (nextSnapshot.docs.length === 0) setAllFetched(true);
+    const tweetsNew = [];
+
+    nextSnapshot.forEach((doc) => {
+      tweetsNew.push(doc.data());
+    });
+
+    setTweets([...tweets, ...tweetsNew]);
   };
 
   if (loading) return <h2>Loading...</h2>;
@@ -143,9 +168,15 @@ function Home() {
           ))}
         </section>
 
-        <button class="load-more-btn" type="button">
-          Load More
-        </button>
+        {tweets.length > 0 && !allFetched && (
+          <button
+            className="load-more-btn"
+            type="button"
+            onClick={fetchMoreTweets}
+          >
+            Load More
+          </button>
+        )}
       </section>
       <section className="search">Search...</section>
     </main>

@@ -383,6 +383,7 @@ body {
   border-radius: 50px;
   margin: 0 auto;
   display: block;
+  margin-bottom: 20px;
 }
 
 .main-page .user-home .load-more-btn:hover,
