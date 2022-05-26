@@ -372,6 +372,26 @@ body {
   cursor: pointer;
 }
 
+.main-page .user-home .load-more-btn {
+  color: var(--base-color);
+  background-color: var(--text-color);
+  border: solid 1px var(--text-color);
+  outline: none;
+  width: 200px;
+  padding: 10px 0;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin: 0 auto;
+  display: block;
+}
+
+.main-page .user-home .load-more-btn:hover,
+.main-page .user-home .load-more-btn:focus {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
 .main-page .search {
   grid-column: span 4;
   position: sticky;
@@ -396,6 +416,14 @@ body {
 .tweet-item .username {
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+.tweet-item .username a {
+  color: inherit;
+}
+
+.tweet-item .username a:hover {
+  color: var(--primary-color);
 }
 
 .tweet-item .user-and-date {

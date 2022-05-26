@@ -142,6 +142,10 @@ function Home() {
             <TweetItem key={t.tid} tweet={t} />
           ))}
         </section>
+
+        <button class="load-more-btn" type="button">
+          Load More
+        </button>
       </section>
       <section className="search">Search...</section>
     </main>
