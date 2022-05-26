@@ -480,11 +480,9 @@ body {
 }
 
 @media (max-width: 499px) {
-  .sign-in-page form {
-    height: calc(75vh - (30vh + 30px));
-  }
-
-  .sign-up-page form {
-    height: 50vh;
+  .sign-in-page form,
+  .sign-up-page form,
+  .sign-in-page > div {
+    height: auto;
   }
 }
