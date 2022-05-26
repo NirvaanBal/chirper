@@ -22,6 +22,7 @@ function Home() {
   const [tweet, setTweet] = useState('');
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [tweetsUpdated, setTweetsUpdated] = useState(false);
   const [upto, setUpto] = useState({});
   const [allFetched, setAllFetched] = useState(false);
 
@@ -76,7 +77,8 @@ function Home() {
     };
 
     getTweets();
-  }, []);
+    setTweetsUpdated(false);
+  }, [tweetsUpdated]);
 
   const onTweetChange = (e) => {
     setTweet(e.target.value);
@@ -98,6 +100,7 @@ function Home() {
     });
 
     setTweet('');
+    setTweetsUpdated(true);
   };
 
   const fetchMoreTweets = async () => {
