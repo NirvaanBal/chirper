@@ -181,7 +181,7 @@ function Home() {
         )}
       </section>
       <section className="search">
-        This work of this section is under progress...
+        This section is under progress...
       </section>
     </main>
   );
