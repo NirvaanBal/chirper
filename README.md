@@ -17,6 +17,10 @@ A social media app inspired from Twitter.
 - Vite
 - Vercel
 
+## Raison d'être
+
+The project was built basically to get hold of Backend as a Service(BaaS) systems like firebase.
+
 ## Bibliography
 
 - Favicon - [Twemoji](https://twemoji.twitter.com/)
