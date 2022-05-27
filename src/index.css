@@ -292,19 +292,32 @@ body {
   padding: 20px;
 }
 
-.main-page .actions .logout-btn {
-  border-color: transparent;
-  outline-color: transparent;
-  background-color: var(--text-color);
-  color: var(--base-color);
-  padding: 5px 0;
-  width: 100px;
-  border-radius: 100px;
+.main-page .actions nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.main-page .actions .logout-btn:hover {
-  background-color: var(--primary-color);
+.main-page .actions nav a,
+.main-page .actions nav button {
   cursor: pointer;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 0;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.main-page .actions nav a:hover,
+.main-page .actions nav a:focus,
+.main-page .actions nav button:hover,
+.main-page .actions nav button:focus {
+  background-color: var(--text-color);
+  color: var(--base-color);
 }
 
 .main-page .user-home {
@@ -468,6 +481,15 @@ body {
   .main-page .actions {
     position: static;
     height: auto;
+  }
+
+  .main-page .actions nav {
+    flex-direction: row;
+  }
+
+  .main-page .actions nav a,
+  .main-page .actions nav button {
+    padding: 4px 10px;
   }
 
   .main-page .actions p {

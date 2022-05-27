@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   collection,
@@ -130,9 +130,13 @@ function Home() {
     <main className="main-page">
       <section className="actions">
         <p>{user && user.displayName ? user.displayName : user.email}</p>
-        <button onClick={() => auth.signOut()} className="logout-btn">
-          Log out
-        </button>
+        <nav>
+          <Link to="/home">Home</Link>
+          <Link to={`/profile/${user.userid}`}>Profile</Link>
+          <button onClick={() => auth.signOut()} className="logout-btn">
+            Log out
+          </button>
+        </nav>
       </section>
       <section className="user-home">
         <h1 style={{ fontSize: '1.6rem', marginBottom: '20px' }}>Home</h1>
@@ -180,9 +184,7 @@ function Home() {
           </button>
         )}
       </section>
-      <section className="search">
-        This section is under progress...
-      </section>
+      <section className="search">This section is under progress...</section>
     </main>
   );
 }
