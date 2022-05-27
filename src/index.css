@@ -479,6 +479,43 @@ body {
   }
 }
 
+.user-profile header nav {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.user-profile header nav a,
+.user-profile header nav button {
+  width: 100px;
+  text-align: center;
+  background-color: var(--secondary-color);
+  border: none;
+  outline: none;
+  padding: 5px 0;
+  border-radius: 50px;
+  color: var(--text-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-profile header nav a:hover,
+.user-profile header nav a:focus {
+  background-color: var(--primary-color);
+  color: var(--base-color);
+}
+
+.user-profile header nav button:hover,
+.user-profile header nav button:focus {
+  background-color: var(--text-color);
+  color: var(--base-color);
+}
+
+.user-profile header h2 {
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
 @media (max-width: 499px) {
   .sign-in-page form,
   .sign-up-page form,

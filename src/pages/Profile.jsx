@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Navigate, useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { getDocs, collection, query, where, limit } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { app, db } from '../firebase.config';
@@ -53,7 +53,11 @@ function Profile() {
     console.log(tweets);
   }, [user]);
 
-  const logOut = () => {};
+  const logOut = () => {
+    const auth = getAuth(app);
+    auth.signOut();
+    navigate('/sign-in');
+  };
 
   return (
     <div className="user-profile">
@@ -62,9 +66,9 @@ function Profile() {
           <Link to="/home">Home</Link>
           {loggedInUser && <button onClick={logOut}>Log out</button>}
         </nav>
+        <h2>{user.displayName}'s latest tweets</h2>
       </header>
       <main>
-        <h2>{user.displayName}</h2>
         <div>
           {tweets.map((tweet) => (
             <TweetItem key={tweet.tid} tweet={tweet} fromProfile={true} />
