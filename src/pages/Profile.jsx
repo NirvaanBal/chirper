@@ -9,6 +9,7 @@ function Profile() {
   const [user, setUser] = useState({});
   const [tweets, setTweets] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
   const params = useParams();
@@ -25,6 +26,7 @@ function Profile() {
       qSnapshot.forEach((user) => {
         setUser(user.data());
       });
+      setLoading(false);
     };
 
     getUser();
@@ -49,8 +51,6 @@ function Profile() {
     };
 
     getTweets();
-
-    console.log(tweets);
   }, [user]);
 
   const logOut = () => {
@@ -58,6 +58,10 @@ function Profile() {
     auth.signOut();
     navigate('/sign-in');
   };
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <div className="user-profile">
