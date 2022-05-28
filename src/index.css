@@ -453,7 +453,7 @@ body {
   align-items: center;
 }
 
-.tweet-item .likes {
+/* .tweet-item .likes {
   display: flex;
   gap: 2px;
   align-items: center;
@@ -462,6 +462,11 @@ body {
   background-color: transparent;
   color: var(--text-color);
 }
+
+.tweet-item .likes:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+} */
 
 .search-field input {
   width: 100%;
@@ -479,9 +484,24 @@ body {
   border-color: var(--text-color);
 }
 
-.tweet-item .likes:hover {
-  color: var(--primary-color);
-  cursor: pointer;
+.search-field .result {
+  margin-top: 20px;
+}
+
+.search-field .user-found a {
+  display: block;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: transparent;
+  color: var(--text-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  border: solid 1px var(--secondary-color);
+}
+
+.search-field .user-found a:hover {
+  background-color: var(--secondary-color);
 }
 
 @media (max-width: 1000px) {
