@@ -463,6 +463,22 @@ body {
   color: var(--text-color);
 }
 
+.search-field input {
+  width: 100%;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  border: solid 1px transparent;
+  outline: none;
+  color: var(--text-color);
+  padding: 10px 15px;
+  border-radius: 50px;
+}
+
+.search-field input:focus,
+.search-field input:hover {
+  border-color: var(--text-color);
+}
+
 .tweet-item .likes:hover {
   color: var(--primary-color);
   cursor: pointer;

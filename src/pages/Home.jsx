@@ -16,6 +16,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { app, db } from '../firebase.config';
 import TweetItem from '../components/TweetItem';
+import Search from '../components/Search';
 
 function Home() {
   const [user, setUser] = useState({});
@@ -184,7 +185,9 @@ function Home() {
           </button>
         )}
       </section>
-      <section className="search">This section is under progress...</section>
+      <section className="search">
+        <Search />
+      </section>
     </main>
   );
 }
